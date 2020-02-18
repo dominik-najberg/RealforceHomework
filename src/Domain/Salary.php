@@ -12,20 +12,42 @@ class Salary
     /** @var  Money */
     private $base;
 
+    /** @var Money */
+    private $deduction;
+
+    /** @var int */
+    private $bonusPercent;
+
     public function __construct(Money $base)
     {
         $this->base = $base;
+        $this->deduction = new Money(0, $base->getCurrency());
     }
 
-    public function getCountryTax(): int
+    public function increaseByPercent(int $percent): void
     {
-        return $this->countryTax;
+        $this->bonusPercent += $percent;
     }
 
-    public function getBase(): Money
+    public function decreaseTax(int $percent): void
     {
-        return $this->base;
+        $this->countryTax -= $percent;
     }
 
+    public function deductSalaryBy(Money $deduction): void
+    {
+        $this->deduction = $this->deduction->add($deduction);
+    }
 
+    public function calculate(): Money
+    {
+        // Adds bonus
+        $bonused = $this->base->multiply((100 + $this->bonusPercent)/100);
+
+        // Deducts
+        $deducted = $bonused->subtract($this->deduction);
+
+        // Returns money after tax
+        return $deducted->multiply((100 - $this->countryTax)/100);
+    }
 }

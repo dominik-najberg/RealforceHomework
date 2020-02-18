@@ -4,7 +4,7 @@
 namespace App\Domain;
 
 
-use App\Domain\Salary;
+use App\Domain;
 
 class Employee
 {
@@ -47,7 +47,7 @@ class Employee
         return $this->kidCount;
     }
 
-    public function isCompanyCar(): bool
+    public function usesCompanyCar(): bool
     {
         return $this->companyCar;
     }

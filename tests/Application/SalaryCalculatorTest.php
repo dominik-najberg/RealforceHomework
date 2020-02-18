@@ -2,7 +2,7 @@
 
 namespace App\Tests\Application;
 
-use App\Application\SalaryCalculator;
+use App\Application\Salary\SalaryCalculator;
 use App\Domain\Employee;
 use App\Domain\Salary;
 use Money\Money;
