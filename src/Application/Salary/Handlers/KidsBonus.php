@@ -3,6 +3,7 @@
 
 namespace App\Application\Salary\Handlers;
 
+
 use App\Application\Salary\Handler;
 use App\Domain\Employee;
 use Money\Money;

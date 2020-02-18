@@ -15,8 +15,7 @@ class SalaryCalculator
 {
     public function calculateSalary(Employee $employee): Money
     {
-        $salaryHandler = new AgeBonus();
-        $salaryHandler
+        $salaryHandler = (new AgeBonus())
             ->setNext(new KidsBonus())
             ->setNext(new CarDeduction())
             ->setNext(new FinalCalculation())

@@ -4,8 +4,6 @@
 namespace App\Domain;
 
 
-use App\Domain;
-
 class Employee
 {
     /** @var string */
