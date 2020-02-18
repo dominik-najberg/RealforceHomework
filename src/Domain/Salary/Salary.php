@@ -33,10 +33,15 @@ class Salary
         $this->bonusPercent += $percent;
     }
 
+    /**
+     * @throws RidiculousTaxException
+     */
     public function decreaseTax(int $percent): void
     {
         $this->countryTax -= $percent;
-        // could throw a custom exception in case tax drops below zero
+        if ($this->countryTax < 0) {
+            throw new RidiculousTaxException($this->countryTax);
+        }
     }
 
     public function deductSalaryBy(Money $deduction): void

@@ -2,6 +2,7 @@
 
 namespace App\Tests\Domain\Salary;
 
+use App\Domain\Salary\Exception\RidiculousTaxException;
 use App\Domain\Salary\Salary;
 use Money\Money;
 use PHPUnit\Framework\TestCase;
@@ -25,6 +26,13 @@ class SalaryTest extends TestCase
         $this->salaryUnderTest->decreaseTax(10);
         $expected = Money::USD(90);
         $this->assertTrue($expected->equals($this->salaryUnderTest->calculate()));
+    }
+
+    public function testDecreaseTaxTooMuch(): void
+    {
+        $this->expectException(RidiculousTaxException::class);
+        $this->expectExceptionMessage('tax cannot be negative (-80%)');
+        $this->salaryUnderTest->decreaseTax(100);
     }
 
     public function testDeductSalaryBy(): void

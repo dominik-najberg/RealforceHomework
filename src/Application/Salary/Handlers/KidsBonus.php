@@ -18,7 +18,11 @@ class KidsBonus extends Handler
     protected function process(Employee $employee): ?Money
     {
         if ($employee->getKidCount() > 2) {
-            $employee->getSalary()->decreaseTax(2);
+            try {
+                $employee->getSalary()->decreaseTax(2);
+            } catch (RidiculousTaxException $e) {
+                // some domain logic
+            }
         }
 
         return null;
