@@ -1,5 +1,8 @@
 <?php
 
+declare(strict_types=1);
+
+
 namespace App\Tests\Application;
 
 use App\Application\Salary\SalaryCalculator;
@@ -21,8 +24,18 @@ class SalaryCalculatorTest extends TestCase
     /**
      * @dataProvider employeeSalaryProvider
      */
-    public function testCalculateSalary(Employee $employee, Money $expected): void
+    public function testCalculateSalary($name, $age, $kidCount, $companyCar, $salaryAmount, $expectedAmount): void
     {
+        $employee = new Employee(
+            $name,
+            $age,
+            $kidCount,
+            $companyCar,
+            new Salary(Money::USD($salaryAmount))
+        );
+
+        $expected = Money::USD($expectedAmount);
+
         $actual = $this->serviceUnderTest->calculateSalary($employee);
 
         $this::assertTrue($expected->equals($actual));
@@ -41,13 +54,13 @@ class SalaryCalculatorTest extends TestCase
     public function employeeSalaryProvider(): array
     {
         return [
-            [new Employee('Jane', 25, 0, false, new Salary(Money::USD(5000))), Money::USD(4000)],
-            [new Employee('Bruce', 52, 0, false, new Salary(Money::USD(5000))), Money::USD(4280)],
-            [new Employee('Michael', 25, 3, false, new Salary(Money::USD(5000))), Money::USD(4100)],
-            [new Employee('Henry', 25, 0, true, new Salary(Money::USD(5000))), Money::USD(3600)],
-            [new Employee('Alice', 26, 2, false, new Salary(Money::USD(6000))), Money::USD(4800)],
-            [new Employee('Bob', 52, 0, true, new Salary(Money::USD(4000))), Money::USD(3024)],
-            [new Employee('Charlie', 36, 3, true, new Salary(Money::USD(5000))), Money::USD(3690)],
+            ['Jane', 25, 0, false, 5000, 4000],
+            ['Bruce', 52, 0, false, 5000, 4280],
+            ['Michael', 25, 3, false,5000, 4100],
+            ['Henry', 25, 0, true, 5000, 3600],
+            ['Alice', 26, 2, false, 6000, 4800],
+            ['Bob', 52, 0, true, 4000, 3024],
+            ['Charlie', 36, 3, true, 5000, 3690],
         ];
     }
 }

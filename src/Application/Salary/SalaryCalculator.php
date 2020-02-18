@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace App\Application\Salary;
 
@@ -15,7 +17,8 @@ class SalaryCalculator
 {
     public function calculateSalary(Employee $employee): Money
     {
-        $salaryHandler = (new AgeBonus())
+        $salaryHandler = new AgeBonus();
+        $salaryHandler
             ->setNext(new KidsBonus())
             ->setNext(new CarDeduction())
             ->setNext(new FinalCalculation())
