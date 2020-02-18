@@ -41,26 +41,16 @@ class SalaryCalculatorTest extends TestCase
         $this::assertTrue($expected->equals($actual));
     }
 
-
-    /**
-        ● Jane is 25 years old, no kids, no car and her salary $5000
-        ● Bruce is 52 years old, no kids, no car and his salary $5000
-        ● Michael is 25 years old, 3 kids, no car and his salary $5000
-        ● Henry is 25 years old, no kids, he is using a company car and his salary $5000
-        ● Alice is 26 years old, she has 2 kids and her salary is $6000
-        ● Bob is 52, he is using a company car and his salary is $4000
-        ● Charlie is 36, he has 3 kids, company car and his salary is $5000
-     */
     public function employeeSalaryProvider(): array
     {
         return [
-            ['Jane', 25, 0, false, 5000, 4000],
-            ['Bruce', 52, 0, false, 5000, 4280],
-            ['Michael', 25, 3, false,5000, 4100],
-            ['Henry', 25, 0, true, 5000, 3600],
-            ['Alice', 26, 2, false, 6000, 4800],
-            ['Bob', 52, 0, true, 4000, 3024],
-            ['Charlie', 36, 3, true, 5000, 3690],
+            'Jane is 25 years old, no kids, no car and her salary $5000' => ['Jane', 25, 0, false, 5000, 4000],
+            'Bruce is 52 years old, no kids, no car and his salary $5000' => ['Bruce', 52, 0, false, 5000, 4280],
+            'Michael is 25 years old, 3 kids, no car and his salary $5000' => ['Michael', 25, 3, false,5000, 4100],
+            'Henry is 25 years old, no kids, using a company car and his salary $5000' => ['Henry', 25, 0, true, 5000, 3600],
+            'Alice is 26 years old, she has 2 kids and her salary is $6000' => ['Alice', 26, 2, false, 6000, 4800],
+            'Bob is 52, he is using a company car and his salary is $4000' => ['Bob', 52, 0, true, 4000, 3024],
+            'Charlie is 36, he has 3 kids, company car and his salary is $5000' => ['Charlie', 36, 3, true, 5000, 3690],
         ];
     }
 }
