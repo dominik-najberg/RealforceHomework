@@ -6,8 +6,8 @@ declare(strict_types=1);
 namespace App\Tests\Application;
 
 use App\Application\Salary\SalaryCalculator;
-use App\Domain\Employee;
-use App\Domain\Salary;
+use App\Domain\Employee\Employee;
+use App\Domain\Salary\Salary;
 use Money\Money;
 use PHPUnit\Framework\TestCase;
 
@@ -38,7 +38,7 @@ class SalaryCalculatorTest extends TestCase
 
         $actual = $this->serviceUnderTest->calculateSalary($employee);
 
-        $this::assertTrue($expected->equals($actual));
+        $this->assertTrue($expected->equals($actual));
     }
 
     public function employeeSalaryProvider(): array

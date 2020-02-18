@@ -3,8 +3,10 @@
 declare(strict_types=1);
 
 
-namespace App\Domain;
+namespace App\Domain\Employee;
 
+
+use App\Domain\Salary\Salary;
 
 class Employee
 {

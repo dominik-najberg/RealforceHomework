@@ -7,7 +7,7 @@ namespace App\Application\Salary\Handlers;
 
 
 use App\Application\Salary\Handler;
-use App\Domain\Employee;
+use App\Domain\Employee\Employee;
 use Money\Money;
 
 class FinalCalculation extends Handler

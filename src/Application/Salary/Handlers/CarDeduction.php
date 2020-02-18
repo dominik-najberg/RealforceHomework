@@ -7,7 +7,7 @@ namespace App\Application\Salary\Handlers;
 
 
 use App\Application\Salary\Handler;
-use App\Domain\Employee;
+use App\Domain\Employee\Employee;
 use Money\Money;
 
 // If an employee wants to use a company car we need to deduct $500

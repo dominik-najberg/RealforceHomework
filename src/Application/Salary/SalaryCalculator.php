@@ -10,7 +10,7 @@ use App\Application\Salary\Handlers\AgeBonus;
 use App\Application\Salary\Handlers\CarDeduction;
 use App\Application\Salary\Handlers\FinalCalculation;
 use App\Application\Salary\Handlers\KidsBonus;
-use App\Domain\Employee;
+use App\Domain\Employee\Employee;
 use Money\Money;
 
 class SalaryCalculator

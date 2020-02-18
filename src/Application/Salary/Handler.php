@@ -6,7 +6,7 @@ declare(strict_types=1);
 namespace App\Application\Salary;
 
 
-use App\Domain\Employee;
+use App\Domain\Employee\Employee;
 use Money\Money;
 
 abstract class Handler

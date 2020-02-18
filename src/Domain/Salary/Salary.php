@@ -3,9 +3,10 @@
 declare(strict_types=1);
 
 
-namespace App\Domain;
+namespace App\Domain\Salary;
 
 
+use App\Domain\Salary\Exception\RidiculousTaxException;
 use Money\Money;
 
 class Salary
@@ -27,7 +28,7 @@ class Salary
         $this->deduction = new Money(0, $base->getCurrency());
     }
 
-    public function increaseByPercent(int $percent): void
+    public function increaseSalaryByPercent(int $percent): void
     {
         $this->bonusPercent += $percent;
     }
@@ -35,6 +36,7 @@ class Salary
     public function decreaseTax(int $percent): void
     {
         $this->countryTax -= $percent;
+        // could throw a custom exception in case tax drops below zero
     }
 
     public function deductSalaryBy(Money $deduction): void
